@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <h2>Login</h2>
+
+    <!-- Formulário tradicional -->
+    <form th:action="@{/login}" method="post">
+        <div>
+            <label>Usuário:</label>
+            <input type="text" name="username" required />
+        </div>
+        <div>
+            <label>Senha:</label>
+            <input type="password" name="password" required />
+        </div>
+        <div>
+            <button type="submit">Entrar</button>
+        </div>
+    </form>
+
+    <hr>
+
+    <h3>Ou entre com:</h3>
+    <div>
+        <a th:href="@{/oauth2/authorization/google}">
+            <button>Login com Google</button>
+        </a>
+        <a th:href="@{/oauth2/authorization/github}">
+            <button>Login com GitHub</button>
+        </a>
+        <a th:href="@{/oauth2/authorization/facebook}">
+            <button>Login com Facebook</button>
+        </a>
+    </div>
+
+    <div th:if="${param.error}">
+        <p style="color:red;">Usuário ou senha inválidos</p>
+    </div>
+
+</body>
+</html>
